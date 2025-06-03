@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_login.css">
+</head>
+<body>
+    <main>
+        <div class="box">
+            <h1>Entrar na conta</h1>
+            <div class="login">
+                <h2>Login</h2>
+                <input type="text" name="Input nome da conta" id="login">
+            </div>
+            <div class="senha">
+                <h2>Senha</h2>
+                <input type="password" name="Input senha do usuário" id="senha">
+            </div>
+            <button id="entrar">Entrar</button>
+        </div>
+        <div class="cadastro_perfil">
+            <button id="cadastro">Cadastrar-se</button>
+        </div>
+        <div class="cadastro_perfil">
+            <button id="menu">Voltar ao menu</button>
+        </div>
+    </main>
+
+    <script src="scripts/app.js"></script>
+    <script>
+        document.getElementById('entrar').addEventListener('click', () => {
+            let login = document.getElementById('login').value.trim()
+            if(!login) {
+                alert("Preencha o campo do Login")
+                return
+            }
+
+            let senha = document.getElementById('senha').value.trim()
+            if(!senha) {
+                alert("Preencha o campo da Senha")
+                return
+            }
+
+            let dados_login = {
+                login: login,
+                senha: senha
+            }
+
+            sessionStorage.setItem('dados_login', JSON.stringify(dados_login))
+
+            let dadosCadastro = JSON.parse(localStorage.getItem("dados_cadastro_usuario"))
+            let dadosLogin = JSON.parse(sessionStorage.getItem("dados_login"))
+
+            if(dadosCadastro == null) {
+                alert("Nenhum cadastro identificado. Cadastre-se")
+                return
+            }
+
+            if (dadosCadastro.login === dadosLogin.login && dadosCadastro.senha === dadosLogin.senha) {
+                alert("Login válido")
+                window.location.href = 'index.html'
+            } else {
+                alert("Login ou senha incorretos")
+            }
+        })
+
+        document.getElementById('cadastro').addEventListener('click', () => {
+            window.location.href = 'cadastro_usuario.html'
+        })
+
+        document.getElementById('menu').addEventListener('click', () => {
+            window.location.href = 'index.html'
+        })
+    </script>
+</body>
+</html>

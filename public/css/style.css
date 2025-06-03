@@ -1,0 +1,99 @@
+/*Início - Configuração geral */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 16px;
+    background-color: #fff2e1;
+    color: #3e2c23;
+}
+
+h1,h2,h3 {
+    font-family: 'Playfair Display', serif !important;
+    color: #3e2c23;
+}
+
+h1 {
+    font-size: 38px !important;
+}
+
+h2 {
+    font-size: 28px !important;
+}
+
+h3 {
+    font-size: 15px !important;
+}
+/*Fim - Configuração geral */
+
+/*Início - Configuração header */
+header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #d94f30;
+}
+
+.logo {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo img {
+    width: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.logo  h1 {
+    cursor: pointer;
+}
+
+.botoes {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-right: 50px;
+}
+
+.botoes button {
+    padding: 7px;
+    width: 150px;
+    background-color: #fff2e1;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.botoes button:hover {
+    transform: scale(1.05);
+}
+/*Fim - Configuração header */
+
+/*Início - Configuração main */
+main {
+    margin: 40px;
+}
+
+.itens_destaque h2{
+    margin-bottom: 40px;
+}
+
+.itens_destaque img {
+    border-radius: 4px;
+}

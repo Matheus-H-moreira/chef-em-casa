@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_dados_conta.css">
+</head>
+<body>
+    <main>
+        <div class="box">
+            <h1>Dados da conta</h1>
+            <div class="login">
+                <h2>Login</h2>
+                <p id="login"></p>
+            </div>
+            <div class="nome">
+                <h2>Nome usuário</h2>
+                <p id="nome"></p>
+            </div>
+            <div class="email">
+                <h2>Email</h2>
+                <p id="email"></p>
+            </div>
+            <div class="senha">
+                <h2>Senha</h2>
+                <p id="senha"></p>
+            </div>
+            <button id="logout">Logout</button>
+        </div>
+    </main>
+
+    <script src="scripts/app.js"></script>
+    <script>
+        window.onload = () => {
+            const dadosCadastro = JSON.parse(localStorage.getItem("dados_cadastro_usuario"))
+
+            document.getElementById('login').innerText = dadosCadastro.login 
+            document.getElementById('nome').innerText = dadosCadastro.nome
+            document.getElementById('email').innerText = dadosCadastro.email
+            document.getElementById('senha').innerText = dadosCadastro.senha
+
+            document.getElementById('logout').addEventListener('click', () => {
+                localStorage.removeItem('dados_cadastro_usuario')
+                sessionStorage.removeItem('dados_login')
+
+                window.location.href = 'index.html'
+            })
+        }
+    </script>
+</body>
+</html>

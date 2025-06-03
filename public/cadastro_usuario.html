@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Usuário</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_cadastro_usuario.css">
+</head>
+<body>
+    <main>
+        <div class="box">
+            <h1>Criar conta</h1>
+            <div class="login">
+                <h2>Login</h2>
+                <input type="text" name="Input nome da conta" id="login">
+            </div>
+            <div class="nome">
+                <h2>Nome usuário</h2>
+                <input type="text" name="Input nome do usuário" id="nome">
+            </div>
+            <div class="email">
+                <h2>Email</h2>
+                <input type="email" name="Input email do usuário" id="email">
+            </div>
+            <div class="senha">
+                <h2>Senha</h2>
+                <input type="password" name="Input senha do usuário" id="senha">
+            </div>
+            <button id="cadastro">Cadastrar-se</button>
+        </div>
+    </main>
+    
+    <script src="scripts/app.js"></script>
+    <script>
+        document.getElementById('cadastro').addEventListener('click', () => {
+            let login_cadastro = document.getElementById('login').value.trim()
+            if(!login_cadastro) {
+                alert("Preencha o campo de Login")
+                return
+            }
+
+            let nome = document.getElementById('nome').value.trim()
+            if(!nome) {
+                alert("Preencha o campo de Nome")
+                return
+            }
+
+            let email = document.getElementById('email').value.trim()
+            if(!email) {
+                alert("Preencha o campo do Email")
+                return
+            }
+            
+            function validarEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+            }
+            if(!validarEmail(email)) {
+                alert("Email inválido")
+                return
+            }
+
+            let senha_email = document.getElementById('senha').value.trim()
+            if(!senha_email) {
+                alert("Preencha o campo da Senha")
+                return
+            }
+
+            let dados_cadastro_usuario = {
+                login: login_cadastro,
+                nome: nome,
+                email: email,
+                senha: senha_email
+            }
+
+            localStorage.setItem('dados_cadastro_usuario', JSON.stringify(dados_cadastro_usuario))
+            alert("Usuário criado com sucesso")
+
+            window.location.href = 'login.html'
+        })
+    </script>
+</body>
+</html>
