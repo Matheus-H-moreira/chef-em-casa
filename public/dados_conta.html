@@ -28,6 +28,7 @@
                 <p id="senha"></p>
             </div>
             <button id="logout">Logout</button>
+            <button id="excluir">Excluir conta</button>
         </div>
     </main>
 
@@ -42,8 +43,13 @@
             document.getElementById('senha').innerText = dadosCadastro.senha
 
             document.getElementById('logout').addEventListener('click', () => {
-                localStorage.removeItem('dados_cadastro_usuario')
                 sessionStorage.removeItem('dados_login')
+
+                window.location.href = 'index.html'
+            })
+
+            document.getElementById('excluir').addEventListener('click', () => {
+                localStorage.removeItem('dados_cadastro_usuario')
 
                 window.location.href = 'index.html'
             })

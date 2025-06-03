@@ -25,7 +25,11 @@ h2 {
 }
 
 h3 {
-    font-size: 15px !important;
+    font-size: 20px !important;
+}
+
+p {
+    font-size: 16px !important;
 }
 /*Fim - Configuração geral */
 
@@ -70,6 +74,10 @@ header {
     margin-right: 50px;
 }
 
+.botoes button h3 {
+    font-size: 16px !important;
+}
+
 .botoes button {
     padding: 7px;
     width: 150px;
@@ -90,10 +98,48 @@ main {
     margin: 40px;
 }
 
-.itens_destaque h2{
+.itens_destaque h2, .itens h2{
     margin-bottom: 40px;
+}
+
+.itens {
+    margin-top: 40px;
 }
 
 .itens_destaque img {
     border-radius: 4px;
+}
+/*Início - Configurção dos cards*/
+.box {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border: 1.5px solid #3e2c23;
+    border-radius: 25px;
+    background-color: #fdf6ee;
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.box:hover {
+    transform: scale(1.05);
+    border: 1.5px solid #375524;
+}
+
+.box p {
+    color: #6b6b6b;
+}
+
+.box p i {
+    color: #375524;
+}
+
+.box img {
+    max-width: 350px;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.box p {
+    text-align: justify;
 }
