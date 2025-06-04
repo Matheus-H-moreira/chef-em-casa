@@ -56,8 +56,50 @@
                 <h3>Título da receita</h3>
                 <img src="imagens/prato1.jpg" alt="Foto de prato">
                 <p><strong>Resumo da receita: </strong>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, harum.</p>
-                <p><i class="fa-regular fa-star" id="estrelaVazia"></i></p>
-                <p><i class="fa-solid fa-star" id="estrelaCheia"></i></p>
+                <p>
+                    <i class="fa-regular fa-star estrela_vazia"></i>
+                    <i class="fa-solid fa-star estrela_cheia esconder"></i>
+                </p>
+            </div>
+
+            <div class="box">
+                <h3>Título da receita</h3>
+                <img src="imagens/prato2.jpg" alt="Foto de prato">
+                <p><strong>Resumo da receita: </strong>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, harum.</p>
+                <p>
+                    <i class="fa-regular fa-star estrela_vazia"></i>
+                    <i class="fa-solid fa-star estrela_cheia esconder"></i>
+                </p>
+            </div>
+
+            <div class="box">
+                <h3>Título da receita</h3>
+                <img src="imagens/prato3.jpg" alt="Foto de prato">
+                <p><strong>Resumo da receita: </strong>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, harum.</p>
+                <p>
+                    <i class="fa-regular fa-star estrela_vazia"></i>
+                    <i class="fa-solid fa-star estrela_cheia esconder"></i>
+                </p>
+            </div>
+
+            <div class="box">
+                <h3>Título da receita</h3>
+                <img src="imagens/prato4.jpg" alt="Foto de prato">
+                <p><strong>Resumo da receita: </strong>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, harum.</p>
+                <p>
+                    <i class="fa-regular fa-star estrela_vazia"></i>
+                    <i class="fa-solid fa-star estrela_cheia esconder"></i>
+                </p>
+            </div>
+
+            <div class="box">
+                <h3>Título da receita</h3>
+                <img src="imagens/prato5.jpg" alt="Foto de prato">
+                <p><strong>Resumo da receita: </strong>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, harum.</p>
+                <p>
+                    <i class="fa-regular fa-star estrela_vazia"></i>
+                    <i class="fa-solid fa-star estrela_cheia esconder"></i>
+                </p>
             </div>
         </div>
     </main>
@@ -79,6 +121,24 @@
                 window.location.href = 'dados_conta.html'
             })
         }
+
+        //Talvez refazer com uma lógica diferente, para ficar salvo mesmo recarregando a página
+        document.querySelectorAll('p').forEach(function(estrelas) {
+            const estrelaVazia = estrelas.querySelector('.estrela_vazia')
+            const estrelaCheia = estrelas.querySelector('.estrela_cheia')
+
+            if(estrelaVazia && estrelaCheia) {
+                estrelaVazia.addEventListener('click', () => {
+                    estrelaVazia.classList.add('esconder')
+                    estrelaCheia.classList.remove('esconder')
+                })
+
+                estrelaCheia.addEventListener('click', () => {
+                    estrelaCheia.classList.add('esconder')
+                    estrelaVazia.classList.remove('esconder')
+                })
+            }
+        })
     </script>
 </body>
 </html>

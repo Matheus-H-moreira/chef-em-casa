@@ -143,3 +143,16 @@ main {
 .box p {
     text-align: justify;
 }
+
+.estrela_vazia, .estrela_cheia {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.estrela_vazia:hover, .estrela_cheia:hover {
+    transform: scale(1.3);
+}
+
+.esconder {
+    display: none !important;
+}
