@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let botaoCadastro = document.getElementById('botaoCadastro')
     if (botaoCadastro) {
         botaoCadastro.addEventListener('click', () => {
-            window.location.href = 'cadastro_usuario.html'
+            window.location.href = 'cadastro_receitas.html'
         })
     }
 
@@ -52,9 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             sessionStorage.setItem('dados_login', JSON.stringify(dados_login))
 
-            let dadosCadastro = JSON.parse(localStorage.getItem("dados_cadastro_usuario"))
-            let dadosLogin = JSON.parse(sessionStorage.getItem("dados_login"))
-
             if (dadosCadastro == null) {
                 alert("Nenhum cadastro identificado. Cadastre-se")
                 return
@@ -66,6 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 alert("Login ou senha incorretos")
             }
+        })
+    }
+
+    let btnCadastro = document.getElementById('botaoVoltarCadastro')
+    if(btnCadastro) {
+        btnCadastro.addEventListener('click', () => {
+            window.location.href = 'cadastro_usuario.html'
         })
     }
 
