@@ -33,27 +33,5 @@
     </main>
 
     <script src="scripts/app.js"></script>
-    <script>
-        window.onload = () => {
-            const dadosCadastro = JSON.parse(localStorage.getItem("dados_cadastro_usuario"))
-
-            document.getElementById('login').innerText = dadosCadastro.login 
-            document.getElementById('nome').innerText = dadosCadastro.nome
-            document.getElementById('email').innerText = dadosCadastro.email
-            document.getElementById('senha').innerText = dadosCadastro.senha
-
-            document.getElementById('logout').addEventListener('click', () => {
-                sessionStorage.removeItem('dados_login')
-
-                window.location.href = 'index.html'
-            })
-
-            document.getElementById('excluir').addEventListener('click', () => {
-                localStorage.removeItem('dados_cadastro_usuario')
-
-                window.location.href = 'index.html'
-            })
-        }
-    </script>
 </body>
 </html>

@@ -27,57 +27,10 @@
                 <h2>Senha</h2>
                 <input type="password" name="Input senha do usuário" id="senha">
             </div>
-            <button id="cadastro">Cadastrar-se</button>
+            <button id="enviarCadastro">Cadastrar-se</button>
         </div>
     </main>
     
     <script src="scripts/app.js"></script>
-    <script>
-        document.getElementById('cadastro').addEventListener('click', () => {
-            let login_cadastro = document.getElementById('login').value.trim()
-            if(!login_cadastro) {
-                alert("Preencha o campo de Login")
-                return
-            }
-
-            let nome = document.getElementById('nome').value.trim()
-            if(!nome) {
-                alert("Preencha o campo de Nome")
-                return
-            }
-
-            let email = document.getElementById('email').value.trim()
-            if(!email) {
-                alert("Preencha o campo do Email")
-                return
-            }
-            
-            function validarEmail(email) {
-                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-            }
-            if(!validarEmail(email)) {
-                alert("Email inválido")
-                return
-            }
-
-            let senha_email = document.getElementById('senha').value.trim()
-            if(!senha_email) {
-                alert("Preencha o campo da Senha")
-                return
-            }
-
-            let dados_cadastro_usuario = {
-                login: login_cadastro,
-                nome: nome,
-                email: email,
-                senha: senha_email
-            }
-
-            localStorage.setItem('dados_cadastro_usuario', JSON.stringify(dados_cadastro_usuario))
-            alert("Usuário criado com sucesso")
-
-            window.location.href = 'login.html'
-        })
-    </script>
 </body>
 </html>

@@ -144,37 +144,6 @@
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
     <script src="scripts/app.js"></script>
-    <script>
-        window.onload = () => {
-            if (dadosCadastro.login === dadosLogin.login && dadosCadastro.senha === dadosLogin.senha) {
-                document.getElementById('botaoLogin')
-                botaoLogin.innerText = "Conta"
-                botaoLogin.id = "dadosConta"
-            }
-
-            document.getElementById('dadosConta').addEventListener('click', () => {
-                window.location.href = 'dados_conta.html'
-            })
-        }
-
-        //Talvez refazer com uma lógica diferente, para ficar salvo mesmo recarregando a página
-        document.querySelectorAll('p').forEach(function (estrelas) {
-            const estrelaVazia = estrelas.querySelector('.estrela_vazia')
-            const estrelaCheia = estrelas.querySelector('.estrela_cheia')
-
-            if (estrelaVazia && estrelaCheia) {
-                estrelaVazia.addEventListener('click', () => {
-                    estrelaVazia.classList.add('esconder')
-                    estrelaCheia.classList.remove('esconder')
-                })
-
-                estrelaCheia.addEventListener('click', () => {
-                    estrelaCheia.classList.add('esconder')
-                    estrelaVazia.classList.remove('esconder')
-                })
-            }
-        })
-    </script>
 </body>
 
 </html>

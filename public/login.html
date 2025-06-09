@@ -22,7 +22,7 @@
             <button id="entrar">Entrar</button>
         </div>
         <div class="cadastro_perfil">
-            <button id="cadastro">Cadastrar-se</button>
+            <button id="botaoCadastro">Cadastrar-se</button>
         </div>
         <div class="cadastro_perfil">
             <button id="menu">Voltar ao menu</button>
@@ -30,50 +30,5 @@
     </main>
 
     <script src="scripts/app.js"></script>
-    <script>
-        document.getElementById('entrar').addEventListener('click', () => {
-            let login = document.getElementById('login').value.trim()
-            if(!login) {
-                alert("Preencha o campo do Login")
-                return
-            }
-
-            let senha = document.getElementById('senha').value.trim()
-            if(!senha) {
-                alert("Preencha o campo da Senha")
-                return
-            }
-
-            let dados_login = {
-                login: login,
-                senha: senha
-            }
-
-            sessionStorage.setItem('dados_login', JSON.stringify(dados_login))
-
-            let dadosCadastro = JSON.parse(localStorage.getItem("dados_cadastro_usuario"))
-            let dadosLogin = JSON.parse(sessionStorage.getItem("dados_login"))
-
-            if(dadosCadastro == null) {
-                alert("Nenhum cadastro identificado. Cadastre-se")
-                return
-            }
-
-            if (dadosCadastro.login === dadosLogin.login && dadosCadastro.senha === dadosLogin.senha) {
-                alert("Login válido")
-                window.location.href = 'index.html'
-            } else {
-                alert("Login ou senha incorretos")
-            }
-        })
-
-        document.getElementById('cadastro').addEventListener('click', () => {
-            window.location.href = 'cadastro_usuario.html'
-        })
-
-        document.getElementById('menu').addEventListener('click', () => {
-            window.location.href = 'index.html'
-        })
-    </script>
 </body>
 </html>
