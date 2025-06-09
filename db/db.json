@@ -1,10 +1,152 @@
 {
   "receitas": [
     {
-      "teste": "teste1"
+      "id": 1,
+      "titulo": "Filé Mignon ao Molho de Vinho com Legumes",
+      "descricao": "Fatias de filé mignon ao ponto, servidas com molho de vinho tinto e acompanhadas de legumes salteados e ervas frescas.",
+      "tempoPreparo": "90 minutos",
+      "ingredientes": [
+        "Filé mignon",
+        "Molho de vinho tinto",
+        "Cenoura",
+        "Tomate",
+        "Ervas frescas"
+      ],
+      "categoria": "Carnes",
+      "autor": "Ana",
+      "data": "09/06/2025",
+      "imagem": "public/imagens/prato1-carrosel.jpg"
     },
     {
-      "teste": "teste2"
+      "id": 2,
+      "titulo": "Hambúrguer Artesanal com Queijo Cheddar",
+      "descricao": "Hambúrguer artesanal com carne suculenta, queijo cheddar, tomate, alface, cebola roxa e molho especial no pão de brioche com gergelim.",
+      "tempoPreparo": "40 minutos",
+      "ingredientes": [
+        "Pão de brioche",
+        "Carne moída",
+        "Queijo cheddar",
+        "Tomate",
+        "Alface",
+        "Cebola roxa"
+      ],
+      "categoria": "Lanches",
+      "autor": "Bruno",
+      "data": "09/06/2025",
+      "imagem": "public/imagens/prato2-carrosel.jpg"
+    },
+    {
+      "id": 3,
+      "titulo": "Penne ao Molho de Tomate com Manjericão",
+      "descricao": "Massa penne al dente coberta com molho de tomate rústico, pimenta e folhas frescas de manjericão, finalizado com azeite de oliva.",
+      "tempoPreparo": "30 minutos",
+      "ingredientes": [
+        "Penne",
+        "Molho de tomate",
+        "Manjericão",
+        "Pimenta",
+        "Azeite de oliva"
+      ],
+      "categoria": "Massas",
+      "autor": "Laura",
+      "data": "09/06/2025",
+      "imagem": "public/imagens/prato3-carrosel.jpg"
+    },
+    {
+      "id": 4,
+      "titulo": "Almoço Clássico com Ovos e Legumes",
+      "descricao": "Ovo frito com gema mole, tomates, rabanetes e purê de batata, servido em um estilo caseiro",
+      "tempoPreparo": "60 minutos",
+      "ingredientes": [
+        "2 ovos",
+        "1 batata cozida",
+        "1 tomate",
+        "3 rabanetes fatiados"
+      ],
+      "categoria": "Vegetariano",
+      "autor": "Ciclano",
+      "data": "06/04/2025",
+      "imagem": "public/imagens/prato1.jpg"
+    },
+    {
+      "id": 5,
+      "titulo": "Medalhão ao Molho Madeira com Purê",
+      "descricao": "Medalhões de carne com cebolas crocantes, sobre purê de batata, servidos com molho madeira",
+      "tempoPreparo": "120 minutos",
+      "ingredientes": [
+        "Medalhões de filé mignon",
+        "Purê de batata",
+        "Cebola frita crocante",
+        "Molho madeira"
+      ],
+      "categoria": "Carne",
+      "autor": "Beltrano",
+      "data": "06/04/2025",
+      "imagem": "public/imagens/prato2.jpg"
+    },
+    {
+      "id": 6,
+      "titulo": "Frango ao Creme com Purê de Batata e Cenoura",
+      "descricao": "Filé de frango ao molho cremoso com ervas, acompanhado de purê de batata com cenoura",
+      "tempoPreparo": "90 minutos",
+      "ingredientes": [
+        "Filé de frango",
+        "Purê de batata",
+        "Cenoura",
+        "Creme de leite com ervas"
+      ],
+      "categoria": "Frango",
+      "autor": "Jorge",
+      "data": "06/04/2025",
+      "imagem": "public/imagens/prato3.jpg"
+    },
+    {
+      "id": 7,
+      "titulo": "Peixe Grelhado com Molho Teriyaki",
+      "descricao": "Filé de peixe inteiro grelhado com cortes decorativos, servido com alface fresca e molho teriyaki",
+      "tempoPreparo": "120 minutos",
+      "ingredientes": [
+        "Peixe inteiro (como cavala ou tilápia)",
+        "Molho teriyaki",
+        "Alface",
+        "Ervas frescas"
+      ],
+      "categoria": "Frutos do Mar",
+      "autor": "David",
+      "data": "06/04/2025",
+      "imagem": "public/imagens/prato4.jpg"
+    },
+    {
+      "id": 8,
+      "titulo": "Combinado de Nigiri Sushi",
+      "descricao": "Seleção de nigiris com peixe cru sobre arroz temperado, acompanhados de wasabi, gengibre e guarnições típicas",
+      "tempoPreparo": "150 minutos",
+      "ingredientes": [
+        "Arroz para sushi",
+        "Peixe cru (salmão, atum, robalo)",
+        "Wasabi",
+        "Gengibre em conserva"
+      ],
+      "categoria": "Frutos do Mar",
+      "autor": "Pedro",
+      "data": "06/04/2025",
+      "imagem": "public/imagens/prato5.jpg"
+    },
+    {
+      "id": 9,
+      "titulo": "Escondidinho de Frango com Purê Cremoso",
+      "descricao": "Gratinado ao forno com camadas de frango desfiado e purê de batata, decorado com tiras de abobrinha e ervas",
+      "tempoPreparo": "150 minutos",
+      "ingredientes": [
+        "Frango desfiado",
+        "Purê de batata",
+        "Abobrinha fatiada",
+        "Queijo ralado para gratinar"
+      ],
+      "categoria": "Frango",
+      "autor": "Rebecca",
+      "data": "06/04/2025",
+      "imagem": "public/imagens/prato6.jpg"
     }
   ]
 }
