@@ -110,10 +110,18 @@ main {
     border-radius: 4px;
 }
 /*Início - Configurção dos cards*/
+.linha_1, .linha_2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-content: center;
+    margin-bottom: 40px;
+}
+
 .box {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 90%;
     border: 1.5px solid #3e2c23;
     border-radius: 25px;
     background-color: #fdf6ee;
@@ -122,7 +130,7 @@ main {
 }
 
 .box:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     border: 1.5px solid #375524;
 }
 
