@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    const cards = document.querySelectorAll('.box')
+    const cards = document.querySelectorAll('.foto_box')
 
     cards.forEach((card) => {
         card.style.cursor = 'pointer'
