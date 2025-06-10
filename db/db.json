@@ -14,8 +14,8 @@
       ],
       "categoria": "Carnes",
       "autor": "Ana",
-      "data": "09/06/2025",
-      "imagem": "public/imagens/prato1-carrosel.jpg"
+      "data": "12/02/2025",
+      "imagem": "imagens/prato1-carrosel.jpg"
     },
     {
       "id": 2,
@@ -32,8 +32,8 @@
       ],
       "categoria": "Lanches",
       "autor": "Bruno",
-      "data": "09/06/2025",
-      "imagem": "public/imagens/prato2-carrosel.jpg"
+      "data": "25/04/2025",
+      "imagem": "imagens/prato2-carrosel.jpg"
     },
     {
       "id": 3,
@@ -49,8 +49,8 @@
       ],
       "categoria": "Massas",
       "autor": "Laura",
-      "data": "09/06/2025",
-      "imagem": "public/imagens/prato3-carrosel.jpg"
+      "data": "03/08/2025",
+      "imagem": "imagens/prato3-carrosel.jpg"
     },
     {
       "id": 4,
@@ -65,8 +65,8 @@
       ],
       "categoria": "Vegetariano",
       "autor": "Ciclano",
-      "data": "06/04/2025",
-      "imagem": "public/imagens/prato1.jpg"
+      "data": "15/01/2025",
+      "imagem": "imagens/prato1.jpg"
     },
     {
       "id": 5,
@@ -81,8 +81,8 @@
       ],
       "categoria": "Carne",
       "autor": "Beltrano",
-      "data": "06/04/2025",
-      "imagem": "public/imagens/prato2.jpg"
+      "data": "27/03/2025",
+      "imagem": "imagens/prato2.jpg"
     },
     {
       "id": 6,
@@ -97,8 +97,8 @@
       ],
       "categoria": "Frango",
       "autor": "Jorge",
-      "data": "06/04/2025",
-      "imagem": "public/imagens/prato3.jpg"
+      "data": "18/05/2025",
+      "imagem": "imagens/prato3.jpg"
     },
     {
       "id": 7,
@@ -113,8 +113,8 @@
       ],
       "categoria": "Frutos do Mar",
       "autor": "David",
-      "data": "06/04/2025",
-      "imagem": "public/imagens/prato4.jpg"
+      "data": "09/09/2025",
+      "imagem": "imagens/prato4.jpg"
     },
     {
       "id": 8,
@@ -129,8 +129,8 @@
       ],
       "categoria": "Frutos do Mar",
       "autor": "Pedro",
-      "data": "06/04/2025",
-      "imagem": "public/imagens/prato5.jpg"
+      "data": "30/10/2025",
+      "imagem": "imagens/prato5.jpg"
     },
     {
       "id": 9,
@@ -145,8 +145,8 @@
       ],
       "categoria": "Frango",
       "autor": "Rebecca",
-      "data": "06/04/2025",
-      "imagem": "public/imagens/prato6.jpg"
+      "data": "21/07/2025",
+      "imagem": "imagens/prato6.jpg"
     }
   ]
 }

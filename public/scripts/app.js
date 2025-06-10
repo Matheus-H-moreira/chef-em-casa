@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let btnCadastro = document.getElementById('botaoVoltarCadastro')
-    if(btnCadastro) {
+    if (btnCadastro) {
         btnCadastro.addEventListener('click', () => {
             window.location.href = 'cadastro_usuario.html'
         })
@@ -190,4 +190,50 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'login.html'
         })
     }
+
+    const cards = document.querySelectorAll('.box')
+
+    cards.forEach((card) => {
+        card.style.cursor = 'pointer'
+        card.addEventListener('click', () => {
+            const id = card.getAttribute('id')
+            window.location.href = `detalhes.html?id=${id}`
+        })
+    })
+
+    const imagensCarrossel = document.querySelectorAll('#carouselExampleAutoplaying .carousel-item img')
+
+    imagensCarrossel.forEach((img) => {
+        img.style.cursor = 'pointer'
+        img.addEventListener('click', function () {
+            const id = img.id;
+            window.location.href = `detalhes.html?id=${id}`
+        })
+    })
+
+    const params = new URLSearchParams(window.location.search)
+    const idReceita = params.get('id')
+
+    if (!idReceita) {
+        return
+    }
+
+    fetch(`http://localhost:3000/receitas/${idReceita}`)
+        .then(res => res.json())
+        .then(dados => {
+            document.getElementById('titulo').textContent = dados.titulo
+            document.getElementById('imagem').src = dados.imagem
+            document.getElementById('descricao').textContent = dados.descricao
+            document.getElementById('categoria').textContent = dados.categoria
+            document.getElementById('autor').textContent = dados.autor
+            document.getElementById('data').textContent = dados.data
+            document.getElementById('tempoPreparo').textContent = dados.tempoPreparo
+
+            if (Array.isArray(dados.ingredientes)) {
+                document.getElementById('ingredientes').innerHTML = dados.ingredientes.map(item => `<li>${item}</li>`).join('')
+            } else {
+                document.getElementById('ingredientes').textContent = dados.ingredientes
+            }
+        })
+        .catch(err => console.error('Erro ao carregar dados: ', err))
 })
