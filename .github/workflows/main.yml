@@ -1,15 +1,14 @@
-name: Verificar Projeto com Node.js
+name: CI - Chef em Casa
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  check-project:
+  lint-and-test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Clonar o repositório
         uses: actions/checkout@v2
@@ -22,5 +21,8 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Verificar se inicia sem erro
-        run: npm start &
+      - name: Rodar lint
+        run: npm run lint
+
+      - name: Rodar testes
+        run: npm test
