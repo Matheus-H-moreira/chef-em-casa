@@ -1,4 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('meuGrafico')
+    if (canvas) {
+        const ctx = canvas.getContext('2d')
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['30 minutos', '40 minutos', '60 minutos', '90 minutos', '120 minutos', '150 minutos'],
+                datasets: [{
+                    label: 'Tempo de preparo',
+                    data: [1, 1, 1, 2, 2, 2],
+                    backgroundColor: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        })
+    }
+    
     let dadosCadastro = JSON.parse(localStorage.getItem("dados_cadastro_usuario"))
     let dadosLogin = JSON.parse(sessionStorage.getItem("dados_login"))
 
