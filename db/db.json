@@ -1,7 +1,7 @@
 {
   "receitas": [
     {
-      "id": 1,
+      "id": "1",
       "titulo": "Filé Mignon ao Molho de Vinho com Legumes",
       "descricao": "Fatias de filé mignon ao ponto, servidas com molho de vinho tinto e acompanhadas de legumes salteados e ervas frescas.",
       "tempoPreparo": "90 minutos",
@@ -18,7 +18,7 @@
       "imagem": "imagens/prato1-carrosel.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "titulo": "Hambúrguer Artesanal com Queijo Cheddar",
       "descricao": "Hambúrguer artesanal com carne suculenta, queijo cheddar, tomate, alface, cebola roxa e molho especial no pão de brioche com gergelim.",
       "tempoPreparo": "40 minutos",
@@ -36,7 +36,7 @@
       "imagem": "imagens/prato2-carrosel.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "titulo": "Penne ao Molho de Tomate com Manjericão",
       "descricao": "Massa penne al dente coberta com molho de tomate rústico, pimenta e folhas frescas de manjericão, finalizado com azeite de oliva.",
       "tempoPreparo": "30 minutos",
@@ -53,7 +53,7 @@
       "imagem": "imagens/prato3-carrosel.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "titulo": "Almoço Clássico com Ovos e Legumes",
       "descricao": "Ovo frito com gema mole, tomates, rabanetes e purê de batata, servido em um estilo caseiro",
       "tempoPreparo": "60 minutos",
@@ -69,7 +69,7 @@
       "imagem": "imagens/prato1.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "titulo": "Medalhão ao Molho Madeira com Purê",
       "descricao": "Medalhões de carne com cebolas crocantes, sobre purê de batata, servidos com molho madeira",
       "tempoPreparo": "120 minutos",
@@ -85,7 +85,7 @@
       "imagem": "imagens/prato2.jpg"
     },
     {
-      "id": 6,
+      "id": "6",
       "titulo": "Frango ao Creme com Purê de Batata e Cenoura",
       "descricao": "Filé de frango ao molho cremoso com ervas, acompanhado de purê de batata com cenoura",
       "tempoPreparo": "90 minutos",
@@ -101,7 +101,7 @@
       "imagem": "imagens/prato3.jpg"
     },
     {
-      "id": 7,
+      "id": "7",
       "titulo": "Peixe Grelhado com Molho Teriyaki",
       "descricao": "Filé de peixe inteiro grelhado com cortes decorativos, servido com alface fresca e molho teriyaki",
       "tempoPreparo": "120 minutos",
@@ -117,7 +117,7 @@
       "imagem": "imagens/prato4.jpg"
     },
     {
-      "id": 8,
+      "id": "8",
       "titulo": "Combinado de Nigiri Sushi",
       "descricao": "Seleção de nigiris com peixe cru sobre arroz temperado, acompanhados de wasabi, gengibre e guarnições típicas",
       "tempoPreparo": "150 minutos",
@@ -133,7 +133,7 @@
       "imagem": "imagens/prato5.jpg"
     },
     {
-      "id": 9,
+      "id": "9",
       "titulo": "Escondidinho de Frango com Purê Cremoso",
       "descricao": "Gratinado ao forno com camadas de frango desfiado e purê de batata, decorado com tiras de abobrinha e ervas",
       "tempoPreparo": "150 minutos",
@@ -151,11 +151,11 @@
   ],
   "receitas_favoritas": [
     {
-      "id": 1,
+      "id": "1",
       "teste": "teste"
     },
     {
-      "id": 2,
+      "id": "2",
       "teste": "teste"
     }
   ]

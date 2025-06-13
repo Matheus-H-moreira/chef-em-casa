@@ -168,6 +168,6 @@ button:hover {
     background-color: #fdf6ee;
     border: 1.5px solid #3e2c23;
     border-radius: 25px;
-    
+    display: none;
 }
 /* Fim - Configuração main */

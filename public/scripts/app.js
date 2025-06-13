@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
     configurarEstrelas()
     carregarDadosConta()
     configurarCards()
-    configurarCarrossel()
-    carregarReceitaPorId()
+    detalhesDoCarrossel()
+    detalhesDosCards()
+    cadastroReceitas()
 })
 
 // --- GRÁFICO ---
@@ -287,7 +288,7 @@ function configurarCards() {
 }
 
 // --- CARROSSEL ---
-function configurarCarrossel() {
+function detalhesDoCarrossel() {
     var imagensCarrossel = document.querySelectorAll('#carouselExampleAutoplaying .carousel-item img')
     imagensCarrossel.forEach(function (img) {
         img.style.cursor = 'pointer'
@@ -299,7 +300,7 @@ function configurarCarrossel() {
 }
 
 // --- DETALHES DA RECEITA ---
-function carregarReceitaPorId() {
+function detalhesDosCards() {
     var params = new URLSearchParams(window.location.search)
     var idReceita = params.get('id')
 
@@ -331,4 +332,94 @@ function carregarReceitaPorId() {
         .catch(function (err) {
             console.error('Erro ao carregar dados: ', err)
         })
+}
+
+// --- CADASTRO DE RECEITAS ---
+function cadastroReceitas() {
+    document.getElementById('botaoInserir').addEventListener('click', () => {
+        const novaReceita = {
+            id: String(document.getElementById('cadastroID').value),
+            titulo: document.getElementById('cadastroTitulo').value,
+            descricao: document.getElementById("cadastroDescricao").value,
+            tempoPreparo: document.getElementById("cadastroTempoPreparo").value,
+            ingredientes: document.getElementById("cadastroIngredientes").value.split(","),
+            categoria: document.getElementById("cadastroCategoria").value,
+            autor: document.getElementById("cadastroAutor").value,
+            data: document.getElementById("cadastroData").value,
+            imagem: document.getElementById("imagem").value
+        }
+
+        fetch("http://localhost:3000/receitas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(novaReceita)
+        })
+            .then(res => res.ok ? alert("Receita cadastrada com sucesso!") : alert("Erro ao cadastrar"))
+            .catch(err => console.error("Erro:", err))
+    })
+
+    document.getElementById('botaoMostrar').addEventListener('click', () => {
+        fetch("http://localhost:3000/receitas")
+            .then(res => res.json())
+            .then(receitas => {
+                const resultado = document.getElementById("resultadoPesquisa")
+                resultado.style.display = "block"
+                resultado.innerHTML = ""
+
+                receitas.forEach(receita => {
+                    resultado.innerHTML +=
+                        `<div class="card m-3 p-3 border rounded">
+                        <h3>${receita.titulo}</h3>
+                        <p><strong>Descrição:</strong> ${receita.descricao}</p>
+                        <p><strong>Ingredientes:</strong> ${receita.ingredientes.join(", ")}</p>
+                        <p><strong>Categoria:</strong> ${receita.categoria}</p>
+                        <p><strong>Autor:</strong> ${receita.autor}</p>
+                        <p><strong>Data:</strong> ${receita.data}</p>
+                        <p><strong>Tempo de preparo:</strong> ${receita.tempoPreparo}</p>
+                        <img src="${receita.imagem}" alt="${receita.titulo}" width="150">
+                    </div>`
+                })
+            })
+    })
+
+    document.getElementById("botaoAlterar").addEventListener("click", () => {
+        const id = document.getElementById("cadastroID").value
+
+        const receitaAtualizada = {
+            titulo: document.getElementById("cadastroTitulo").value,
+            descricao: document.getElementById("cadastroDescricao").value,
+            tempoPreparo: document.getElementById("cadastroTempoPreparo").value,
+            ingredientes: document.getElementById("cadastroIngredientes").value.split(","),
+            categoria: document.getElementById("cadastroCategoria").value,
+            autor: document.getElementById("cadastroAutor").value,
+            data: document.getElementById("cadastroData").value,
+            imagem: document.getElementById("imagem").value
+        };
+
+        fetch(`http://localhost:3000/receitas/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(receitaAtualizada)
+        })
+            .then(res => res.ok ? alert("Receita alterada com sucesso!") : alert("Erro ao alterar receita"))
+            .catch(err => console.error("Erro:", err))
+    })
+
+    document.getElementById("botaoDelete").addEventListener("click", () => {
+        const id = document.getElementById("cadastroID").value
+
+        fetch(`http://localhost:3000/receitas/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.ok ? alert("Receita excluída com sucesso!") : alert("Erro ao excluir receita"))
+            .catch(err => console.error("Erro:", err))
+    })
+
+    document.getElementById("botaoLimpar").addEventListener("click", () => {
+        document.querySelectorAll("input").forEach(input => input.value = "")
+    })
 }
