@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     configurarLogin()
     configurarCadastro()
     dadosConta()
+    marcarFavoritosSalvos()
     configurarEstrelas()
     carregarDadosConta()
     configurarCards()
@@ -237,23 +238,56 @@ function dadosConta() {
 }
 
 // --- ESTRELAS ---
+function marcarFavoritosSalvos() {
+    let favoritos = JSON.parse(localStorage.getItem("receitas_favoritas")) || []
+
+    document.querySelectorAll('p[data-id]').forEach(function (paragrafo) {
+        let receitaId = paragrafo.getAttribute('data-id')
+        let estrelaVazia = paragrafo.querySelector('.estrela_vazia')
+        let estrelaCheia = paragrafo.querySelector('.estrela_cheia')
+
+        if (favoritos.some(fav => fav.id === receitaId)) {
+            estrelaVazia.classList.add('esconder')
+            estrelaCheia.classList.remove('esconder')
+        }
+    })
+}
+
 function configurarEstrelas() {
     document.querySelectorAll('p').forEach(function (paragrafo) {
         var estrelaVazia = paragrafo.querySelector('.estrela_vazia')
         var estrelaCheia = paragrafo.querySelector('.estrela_cheia')
+        var receitaId = paragrafo.getAttribute('data-id')
 
-        if (estrelaVazia && estrelaCheia) {
+        if (estrelaVazia && estrelaCheia && receitaId) {
             estrelaVazia.addEventListener('click', function () {
                 estrelaVazia.classList.add('esconder')
                 estrelaCheia.classList.remove('esconder')
+                salvarFavorito(receitaId)
             })
 
             estrelaCheia.addEventListener('click', function () {
                 estrelaCheia.classList.add('esconder')
                 estrelaVazia.classList.remove('esconder')
+                removerFavorito(receitaId)
             })
         }
     })
+}
+
+function salvarFavorito(id) {
+    let favoritos = JSON.parse(localStorage.getItem("receitas_favoritas")) || []
+
+    if (!favoritos.some(fav => fav.id === id)) {
+        favoritos.push({ id: id, teste: "teste" })
+        localStorage.setItem("receitas_favoritas", JSON.stringify(favoritos))
+    }
+}
+
+function removerFavorito(id) {
+    let favoritos = JSON.parse(localStorage.getItem("receitas_favoritas")) || []
+    favoritos = favoritos.filter(fav => fav.id !== id)
+    localStorage.setItem("receitas_favoritas", JSON.stringify(favoritos))
 }
 
 // --- DADOS DA CONTA ---
