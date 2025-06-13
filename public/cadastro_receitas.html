@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,20 +12,100 @@
         rel="stylesheet">
     <link rel="stylesheet" href="css/style_cadastro.css">
 </head>
+
 <body>
     <header>
         <div class="logo" id="logo">
             <img src="imagens/logo.png" alt="Logo da marca">
-            <h1>Chefe em casa</h1>  
+            <h1>Chefe em casa</h1>
         </div>
         <div class="botoes">
-            <button><h3 id="botaoCadastro">Cadastro receitas</h3></button>
-            <button><h3 id="botaoFavoritos">Favoritos</h3></button>
-            <button><h3 id="botaoLogin">Login</h3></button>
+            <button>
+                <h3 id="botaoCadastro">Cadastro receitas</h3>
+            </button>
+            <button>
+                <h3 id="botaoFavoritos">Favoritos</h3>
+            </button>
+            <button>
+                <h3 id="botaoLogin">Login</h3>
+            </button>
         </div>
     </header>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <main>
+        <h2>Cadastro de receitas</h2>
+        <div id="msg"></div>
+        <div class="linha_1">
+            <div class="cadastro_id">
+                <p>ID</p>
+                <input type="number" id="cadastroID" min="1">
+            </div>
+
+            <div class="cadastro_titulo">
+                <p>Título receita</p>
+                <input type="text" id="cadastroTitulo">
+            </div>
+        </div>
+
+        <div class="linha_2">
+            <div class="cadastro_descricao">
+                <p>Descrição da receita</p>
+                <input type="text" id="cadastroDescricao">
+            </div>
+
+            <div class="cadastro_ingredientes">
+                <p>Ingredientes da receita</p>
+                <input type="text" id="cadastroIngredientes">
+            </div>
+        </div>
+
+        <div class="linha_3">
+            <div class="cadastro_categoria">
+                <p>Categoria da receita</p>
+                <input type="text" id="cadastroCategoria">
+            </div>
+
+            <div class="cadastro_autor">
+                <p>Autor</p>
+                <input type="text" id="cadastroAutor">
+            </div>
+        </div>
+
+        <div class="linha_4">
+            <div class="cadastro_data">
+                <p>Data</p>
+                <input type="date" id="cadastroData">
+            </div>
+
+            <div class="cadastro_imagem">
+                <p>Imagem da receita</p>
+                <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="imagem" id="imagem" accept="image/*"><br><br>
+                </form>
+            </div>
+        </div>
+
+        <div class="linha_5">
+            <div class="tempo_preparo">
+                <p>Tempo de preparo</p>
+                <input type="text" id="cadastroTempoPreparo">
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-success" id="botaoInserir">Inserir</button>
+        <button type="button" class="btn btn-secondary" id="botaoAlterar">Alterar</button>
+        <button type="button" class="btn btn-danger" id="botaoDelete">Excluir</button>
+        <button type="button" class="btn btn-primary" id="botaoLimpar">Limpar form</button>
+        <button type="button" class="btn btn-warning" id="botaoMostrar">Mostrar pratos</button>
+    </main>
+
+    <div class="mostarPratos" id="resultadoPesquisa"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="scripts/app.js"></script>
 </body>
+
 </html>

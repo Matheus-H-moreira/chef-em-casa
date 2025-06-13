@@ -148,5 +148,15 @@
       "data": "21/07/2025",
       "imagem": "imagens/prato6.jpg"
     }
+  ],
+  "receitas_favoritas": [
+    {
+      "id": 1,
+      "teste": "teste"
+    },
+    {
+      "id": 2,
+      "teste": "teste"
+    }
   ]
 }

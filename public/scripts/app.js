@@ -1,8 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('meuGrafico')
-    if (canvas) {
-        const ctx = canvas.getContext('2d')
+document.addEventListener('DOMContentLoaded', function () {
+    inicializarGrafico()
+    configurarNavegacao()
+    configurarLogin()
+    configurarCadastro()
+    dadosConta()
+    configurarEstrelas()
+    carregarDadosConta()
+    configurarCards()
+    configurarCarrossel()
+    carregarReceitaPorId()
+})
 
+// --- GRÁFICO ---
+function inicializarGrafico() {
+    var canvas = document.getElementById('meuGrafico');
+    if (canvas) {
+        var ctx = canvas.getContext('2d');
         new Chart(ctx, {
             type: 'bar',
             data: {
@@ -10,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: [{
                     label: 'Tempo de preparo',
                     data: [1, 1, 1, 2, 2, 2],
-                    backgroundColor: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                     borderWidth: 2
                 }]
             },
@@ -21,56 +33,76 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
-        })
+        });
     }
-    
-    let dadosCadastro = JSON.parse(localStorage.getItem("dados_cadastro_usuario"))
-    let dadosLogin = JSON.parse(sessionStorage.getItem("dados_login"))
+}
 
-    let logo = document.getElementById('logo')
+// --- NAVEGAÇÃO ---
+function configurarNavegacao() {
+    var logo = document.getElementById('logo')
     if (logo) {
-        logo.addEventListener('click', () => {
+        logo.addEventListener('click', function () {
             window.location.href = 'index.html'
         })
     }
 
-    let botaoCadastro = document.getElementById('botaoCadastro')
+    var botaoCadastro = document.getElementById('botaoCadastro')
     if (botaoCadastro) {
-        botaoCadastro.addEventListener('click', () => {
+        botaoCadastro.addEventListener('click', function () {
             window.location.href = 'cadastro_receitas.html'
         })
     }
 
-    let botaoFavoritos = document.getElementById('botaoFavoritos')
+    var botaoFavoritos = document.getElementById('botaoFavoritos')
     if (botaoFavoritos) {
-        botaoFavoritos.addEventListener('click', () => {
+        botaoFavoritos.addEventListener('click', function () {
             window.location.href = 'favoritos.html'
         })
     }
 
-    let botaoLogin = document.getElementById('botaoLogin')
+    var botaoLogin = document.getElementById('botaoLogin')
     if (botaoLogin) {
-        botaoLogin.addEventListener('click', () => {
+        botaoLogin.addEventListener('click', function () {
             window.location.href = 'login.html'
         })
     }
 
-    let entrarBtn = document.getElementById('entrar')
+    var menuBtn = document.getElementById('menu')
+    if (menuBtn) {
+        menuBtn.addEventListener('click', function () {
+            window.location.href = 'index.html'
+        })
+    }
+
+    var btnCadastro = document.getElementById('botaoVoltarCadastro')
+    if (btnCadastro) {
+        btnCadastro.addEventListener('click', function () {
+            window.location.href = 'cadastro_usuario.html'
+        })
+    }
+}
+
+// --- LOGIN ---
+function configurarLogin() {
+    var dadosCadastro = JSON.parse(localStorage.getItem("dados_cadastro_usuario"))
+    var dadosLogin = JSON.parse(sessionStorage.getItem("dados_login"))
+
+    var entrarBtn = document.getElementById('entrar')
     if (entrarBtn) {
-        entrarBtn.addEventListener('click', () => {
-            let login = document.getElementById('login').value.trim()
+        entrarBtn.addEventListener('click', function () {
+            var login = document.getElementById('login').value.trim()
             if (!login) {
                 alert("Preencha o campo do Login")
                 return
             }
 
-            let senha = document.getElementById('senha').value.trim()
+            var senha = document.getElementById('senha').value.trim()
             if (!senha) {
                 alert("Preencha o campo da Senha")
                 return
             }
 
-            let dados_login = {
+            var dados_login = {
                 login: login,
                 senha: senha
             }
@@ -82,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return
             }
 
-            if (dadosCadastro.login === dadosLogin.login && dadosCadastro.senha === dadosLogin.senha) {
+            if (dadosCadastro.login === dados_login.login && dadosCadastro.senha === dados_login.senha) {
                 alert("Login válido")
                 window.location.href = 'index.html'
             } else {
@@ -91,118 +123,70 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    let btnCadastro = document.getElementById('botaoVoltarCadastro')
-    if (btnCadastro) {
-        btnCadastro.addEventListener('click', () => {
-            window.location.href = 'cadastro_usuario.html'
-        })
-    }
-
-    let menuBtn = document.getElementById('menu')
-    if (menuBtn) {
-        menuBtn.addEventListener('click', () => {
-            window.location.href = 'index.html'
-        })
-    }
-
     if (dadosCadastro && dadosLogin && dadosCadastro.login === dadosLogin.login && dadosCadastro.senha === dadosLogin.senha) {
+        var botaoLogin = document.getElementById('botaoLogin')
         if (botaoLogin) {
             botaoLogin.innerText = "Conta"
             botaoLogin.id = "dadosConta"
 
-            let dadosContaBtn = document.getElementById('dadosConta')
-            if (dadosContaBtn) {
-                dadosContaBtn.addEventListener('click', () => {
+            var novoBotaoConta = document.getElementById('dadosConta')
+            if (novoBotaoConta) {
+                novoBotaoConta.addEventListener('click', function () {
                     window.location.href = 'dados_conta.html'
                 })
             }
         }
     }
+}
 
-    document.querySelectorAll('p').forEach(estrelas => {
-        let estrelaVazia = estrelas.querySelector('.estrela_vazia')
-        let estrelaCheia = estrelas.querySelector('.estrela_cheia')
+// --- CADASTRO ---
+function configurarCadastro() {
+    var cadastroFormBtn = document.getElementById('enviarCadastro')
 
-        if (estrelaVazia && estrelaCheia) {
-            estrelaVazia.addEventListener('click', () => {
-                estrelaVazia.classList.add('esconder')
-                estrelaCheia.classList.remove('esconder')
-            })
-
-            estrelaCheia.addEventListener('click', () => {
-                estrelaCheia.classList.add('esconder')
-                estrelaVazia.classList.remove('esconder')
-            })
-        }
-    })
-
-    if (dadosCadastro) {
-        let loginEl = document.getElementById('login')
-        if (loginEl) loginEl.innerText = dadosCadastro.login
-
-        let nomeEl = document.getElementById('nome')
-        if (nomeEl) nomeEl.innerText = dadosCadastro.nome
-
-        let emailEl = document.getElementById('email')
-        if (emailEl) emailEl.innerText = dadosCadastro.email
-
-        let senhaEl = document.getElementById('senha')
-        if (senhaEl) senhaEl.innerText = dadosCadastro.senha
-    }
-
-    let logoutBtn = document.getElementById('logout')
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            sessionStorage.removeItem('dados_login')
-            window.location.href = 'index.html'
-        })
-    }
-
-    let excluirBtn = document.getElementById('excluir')
-    if (excluirBtn) {
-        excluirBtn.addEventListener('click', () => {
-            localStorage.removeItem('dados_cadastro_usuario')
-            window.location.href = 'index.html'
-        })
-    }
-
-    let cadastroFormBtn = document.getElementById('enviarCadastro')
-    if (cadastroFormBtn && document.getElementById('login') && document.getElementById('nome') && document.getElementById('email') && document.getElementById('senha')) {
-        cadastroFormBtn.addEventListener('click', event => {
+    if (
+        cadastroFormBtn &&
+        document.getElementById('login') &&
+        document.getElementById('nome') &&
+        document.getElementById('email') &&
+        document.getElementById('senha')
+    ) {
+        cadastroFormBtn.addEventListener('click', function (event) {
             event.preventDefault()
 
-            let login_cadastro = document.getElementById('login').value.trim()
+            var login_cadastro = document.getElementById('login').value.trim()
             if (!login_cadastro) {
                 alert("Preencha o campo de Login")
                 return
             }
 
-            let nome = document.getElementById('nome').value.trim()
+            var nome = document.getElementById('nome').value.trim()
             if (!nome) {
                 alert("Preencha o campo de Nome")
                 return
             }
 
-            let email = document.getElementById('email').value.trim()
+            var email = document.getElementById('email').value.trim()
             if (!email) {
                 alert("Preencha o campo do Email")
                 return
             }
 
-            const validarEmail = email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+            var validarEmail = function (email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+            }
 
             if (!validarEmail(email)) {
                 alert("Email inválido")
                 return
             }
 
-            let senha_email = document.getElementById('senha').value.trim()
+            var senha_email = document.getElementById('senha').value.trim()
             if (!senha_email) {
                 alert("Preencha o campo da Senha")
                 return
             }
 
-            let dados_cadastro_usuario = {
+            var dados_cadastro_usuario = {
                 login: login_cadastro,
                 nome: nome,
                 email: email,
@@ -211,41 +195,123 @@ document.addEventListener('DOMContentLoaded', () => {
 
             localStorage.setItem('dados_cadastro_usuario', JSON.stringify(dados_cadastro_usuario))
             alert("Usuário criado com sucesso")
-
             window.location.href = 'login.html'
         })
     }
+}
 
-    const cards = document.querySelectorAll('.foto_box')
+// --- CARREGAR DADOS CONTA ---
+function dadosConta() {
+    var logoutBtn = document.getElementById('logout')
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function () {
+            sessionStorage.removeItem('dados_login')
+            window.location.href = 'index.html'
+        })
+    }
 
-    cards.forEach((card) => {
+    var excluirBtn = document.getElementById('excluir')
+    if (excluirBtn) {
+        excluirBtn.addEventListener('click', function () {
+            localStorage.removeItem('dados_cadastro_usuario')
+            window.location.href = 'index.html'
+        })
+    }
+
+    var dadosCadastro = JSON.parse(localStorage.getItem("dados_cadastro_usuario"))
+
+    if (dadosCadastro) {
+        var loginEl = document.getElementById('login')
+        if (loginEl) loginEl.innerText = dadosCadastro.login
+
+        var nomeEl = document.getElementById('nome')
+        if (nomeEl) nomeEl.innerText = dadosCadastro.nome
+
+        var emailEl = document.getElementById('email')
+        if (emailEl) emailEl.innerText = dadosCadastro.email
+
+        var senhaEl = document.getElementById('senha')
+        if (senhaEl) senhaEl.innerText = dadosCadastro.senha
+    }
+}
+
+// --- ESTRELAS ---
+function configurarEstrelas() {
+    document.querySelectorAll('p').forEach(function (paragrafo) {
+        var estrelaVazia = paragrafo.querySelector('.estrela_vazia')
+        var estrelaCheia = paragrafo.querySelector('.estrela_cheia')
+
+        if (estrelaVazia && estrelaCheia) {
+            estrelaVazia.addEventListener('click', function () {
+                estrelaVazia.classList.add('esconder')
+                estrelaCheia.classList.remove('esconder')
+            })
+
+            estrelaCheia.addEventListener('click', function () {
+                estrelaCheia.classList.add('esconder')
+                estrelaVazia.classList.remove('esconder')
+            })
+        }
+    })
+}
+
+// --- DADOS DA CONTA ---
+function carregarDadosConta() {
+    var dadosCadastro = JSON.parse(localStorage.getItem("dados_cadastro_usuario"))
+
+    if (dadosCadastro) {
+        var loginEl = document.getElementById('spanLogin')
+        if (loginEl) loginEl.innerText = dadosCadastro.login
+
+        var nomeEl = document.getElementById('spanNome')
+        if (nomeEl) nomeEl.innerText = dadosCadastro.nome
+
+        var emailEl = document.getElementById('spanEmail')
+        if (emailEl) emailEl.innerText = dadosCadastro.email
+
+        var senhaEl = document.getElementById('spanSenha')
+        if (senhaEl) senhaEl.innerText = dadosCadastro.senha
+    }
+}
+
+// --- CARDS ---
+function configurarCards() {
+    var cards = document.querySelectorAll('.foto_box')
+    cards.forEach(function (card) {
         card.style.cursor = 'pointer'
-        card.addEventListener('click', () => {
-            const id = card.getAttribute('id')
-            window.location.href = `detalhes.html?id=${id}`
+        card.addEventListener('click', function () {
+            var id = card.getAttribute('id')
+            window.location.href = 'detalhes.html?id=' + id
         })
     })
+}
 
-    const imagensCarrossel = document.querySelectorAll('#carouselExampleAutoplaying .carousel-item img')
-
-    imagensCarrossel.forEach((img) => {
+// --- CARROSSEL ---
+function configurarCarrossel() {
+    var imagensCarrossel = document.querySelectorAll('#carouselExampleAutoplaying .carousel-item img')
+    imagensCarrossel.forEach(function (img) {
         img.style.cursor = 'pointer'
         img.addEventListener('click', function () {
-            const id = img.id;
-            window.location.href = `detalhes.html?id=${id}`
+            var id = img.id
+            window.location.href = 'detalhes.html?id=' + id
         })
     })
+}
 
-    const params = new URLSearchParams(window.location.search)
-    const idReceita = params.get('id')
+// --- DETALHES DA RECEITA ---
+function carregarReceitaPorId() {
+    var params = new URLSearchParams(window.location.search)
+    var idReceita = params.get('id')
 
     if (!idReceita) {
         return
     }
 
-    fetch(`http://localhost:3000/receitas/${idReceita}`)
-        .then(res => res.json())
-        .then(dados => {
+    fetch('http://localhost:3000/receitas/' + idReceita)
+        .then(function (res) {
+            return res.json()
+        })
+        .then(function (dados) {
             document.getElementById('titulo').textContent = dados.titulo
             document.getElementById('imagem').src = dados.imagem
             document.getElementById('descricao').textContent = dados.descricao
@@ -255,10 +321,14 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('tempoPreparo').textContent = dados.tempoPreparo
 
             if (Array.isArray(dados.ingredientes)) {
-                document.getElementById('ingredientes').innerHTML = dados.ingredientes.map(item => `<li>${item}</li>`).join('')
+                document.getElementById('ingredientes').innerHTML = dados.ingredientes.map(function (item) {
+                    return '<li>' + item + '</li>'
+                }).join('')
             } else {
                 document.getElementById('ingredientes').textContent = dados.ingredientes
             }
         })
-        .catch(err => console.error('Erro ao carregar dados: ', err))
-})
+        .catch(function (err) {
+            console.error('Erro ao carregar dados: ', err)
+        })
+}

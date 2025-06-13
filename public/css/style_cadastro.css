@@ -84,3 +84,90 @@ header {
     transform: scale(1.05);
 }
 /*Fim - Configuração header */
+
+/* Início - Configuração main */
+main {
+    margin: 40px;
+}
+
+main h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+main div[class^="linha_"] {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+main div[class^="linha_"] > div {
+    flex: 1;
+    min-width: 250px;
+}
+
+main p {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #3e2c23;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #3e2c23;
+    border-radius: 10px;
+    background-color: #fffdf9;
+    color: #3e2c23;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input[type="file"] {
+    background-color: transparent;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="file"]:focus {
+    outline: none;
+    border-color: #375524;
+    box-shadow: 0 0 5px #37552480;
+}
+
+button {
+    margin: 10px 10px 0 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 25px;
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#msg {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #d94f30;
+    text-align: center;
+}
+
+.mostarPratos {
+    margin: 40px;
+    padding: 20px;
+    background-color: #fdf6ee;
+    border: 1.5px solid #3e2c23;
+    border-radius: 25px;
+    
+}
+/* Fim - Configuração main */
