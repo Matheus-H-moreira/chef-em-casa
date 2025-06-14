@@ -1,7 +1,8 @@
-/*Início - Configuração geral */
+/* Início - Configuração geral */
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -11,7 +12,7 @@ body {
     color: #3e2c23;
 }
 
-h1,h2,h3 {
+h1, h2, h3 {
     font-family: 'Playfair Display', serif !important;
     color: #3e2c23;
 }
@@ -25,25 +26,27 @@ h2 {
 }
 
 h3 {
-    font-size: 15px !important;
+    font-size: 14px !important;
 }
-/*Fim - Configuração geral */
+/* Fim - Configuração geral */
 
-/*Início - Configuração header */
+/* Início - Header */
 header {
     display: flex;
-    width: 100%;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px 40px;
     background-color: #d94f30;
 }
 
 .logo {
-    width: 60%;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
+    gap: 15px;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .logo:hover {
@@ -53,39 +56,37 @@ header {
 .logo img {
     width: 150px;
     border-radius: 50%;
-    cursor: pointer;
 }
 
-.logo  h1 {
-    cursor: pointer;
+.logo h1 {
+    font-size: 28px;
 }
 
 .botoes {
-    width: 40%;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    gap: 30px;
     align-items: center;
-    gap: 40px;
-    margin-right: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .botoes button {
-    padding: 7px;
-    width: 150px;
+    padding: 7px 16px;
+    min-width: 130px;
     background-color: #fff2e1;
     border: none;
     border-radius: 25px;
     cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
     transition: transform 0.3s ease;
 }
 
 .botoes button:hover {
     transform: scale(1.05);
 }
-/*Fim - Configuração header */
+/* Fim - Header */
 
-/* Início - Configuração main */
+/* Início - Main */
 main {
     margin: 40px;
 }
@@ -97,10 +98,10 @@ main h2 {
 
 main div[class^="linha_"] {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 40px;
     margin-bottom: 30px;
-    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 main div[class^="linha_"] > div {
@@ -126,17 +127,13 @@ input[type="file"] {
     color: #3e2c23;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    box-sizing: border-box;
 }
 
 input[type="file"] {
     background-color: transparent;
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus,
-input[type="date"]:focus,
-input[type="file"]:focus {
+input:focus {
     outline: none;
     border-color: #375524;
     box-shadow: 0 0 5px #37552480;
@@ -148,6 +145,10 @@ button {
     font-size: 16px;
     font-family: 'Open Sans', sans-serif;
     border-radius: 25px;
+    border: none;
+    background-color: #d94f30;
+    color: #fff2e1;
+    cursor: pointer;
     transition: transform 0.3s ease;
 }
 
@@ -163,11 +164,73 @@ button:hover {
 }
 
 .mostarPratos {
-    margin: 40px;
+    margin: 40px auto;
     padding: 20px;
     background-color: #fdf6ee;
     border: 1.5px solid #3e2c23;
     border-radius: 25px;
     display: none;
 }
-/* Fim - Configuração main */
+/* Fim - Main */
+
+/* Início - Responsividade */
+@media (max-width: 991px) {
+    header {
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .logo {
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .logo img {
+        width: 100px;
+    }
+
+    .logo h1 {
+        font-size: 24px;
+    }
+
+    .botoes {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .botoes button {
+        min-width: 120px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 575px) {
+    .logo img {
+        width: 80px;
+    }
+
+    .logo h1 {
+        font-size: 20px;
+    }
+
+    .botoes {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .botoes button {
+        width: 90%;
+        max-width: 250px;
+    }
+
+    main {
+        margin: 20px;
+    }
+
+    main div[class^="linha_"] {
+        gap: 20px;
+    }
+}
+/* Fim - Responsividade */

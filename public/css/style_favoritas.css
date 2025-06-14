@@ -84,3 +84,61 @@ header {
     transform: scale(1.05);
 }
 /*Fim - Configuração header */
+
+/* Início - Responsividade */
+@media (max-width: 991px) {
+  header {
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    justify-content: center;
+  }
+
+  .logo {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+  .logo img {
+    width: 120px;
+  }
+
+  .logo h1 {
+    font-size: 26px;
+  }
+
+  .botoes {
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+    margin-right: 0;
+    flex-wrap: wrap;
+  }
+
+  .botoes button {
+    width: 130px;
+    font-size: 14px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 575px) {
+  .logo img {
+    width: 90px;
+  }
+
+  .logo h1 {
+    font-size: 22px;
+  }
+
+  .botoes {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .botoes button {
+    width: 90%;
+    max-width: 250px;
+  }
+}
+/* Fim - Responsividade */

@@ -86,3 +86,41 @@ button {
 button:hover {
     background-color: #b45c25;
 }
+/* Fim - Main */
+
+/* Início - Responsividade */
+@media (max-width: 480px) {
+    .box {
+        padding: 30px 20px;
+        width: 95vw;
+    }
+    
+    h1 {
+        font-size: 28px !important;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        font-size: 22px !important;
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    .login,
+    .nome,
+    .email,
+    .senha {
+        margin-bottom: 18px;
+    }
+}
+/* Fim - Responsividade */

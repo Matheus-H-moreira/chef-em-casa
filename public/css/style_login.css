@@ -97,3 +97,28 @@ input , button {
     display: block;
     margin: 10px auto;
 }
+/*Fim - Configuração main */
+
+/*Início - Configuração responsividade */
+@media (max-width: 400px) {
+    h1 {
+        font-size: 28px !important;
+        margin-bottom: 50px;
+    }
+    h2 {
+        font-size: 22px !important;
+    }
+    input, button {
+        width: 100%;
+        margin: 8px 0;
+    }
+    .box {
+        padding: 20px 15px;
+        width: 95vw;
+    }
+    main {
+        height: auto;
+        padding: 20px 10px;
+    }
+}
+/*Fim - Configuração responsividade */

@@ -239,25 +239,31 @@ function dadosConta() {
 
 // --- ESTRELAS ---
 function marcarFavoritosSalvos() {
-    let favoritos = JSON.parse(localStorage.getItem("receitas_favoritas")) || []
+    fetch('http://localhost:3000/receitas_favoritas')
+        .then(response => response.json())
+        .then(favoritos => {
+            document.querySelectorAll('p[data-id]').forEach(paragrafo => {
+                let receitaId = parseInt(paragrafo.getAttribute('data-id'))
+                let estrelaVazia = paragrafo.querySelector('.estrela_vazia')
+                let estrelaCheia = paragrafo.querySelector('.estrela_cheia')
 
-    document.querySelectorAll('p[data-id]').forEach(function (paragrafo) {
-        let receitaId = paragrafo.getAttribute('data-id')
-        let estrelaVazia = paragrafo.querySelector('.estrela_vazia')
-        let estrelaCheia = paragrafo.querySelector('.estrela_cheia')
-
-        if (favoritos.some(fav => fav.id === receitaId)) {
-            estrelaVazia.classList.add('esconder')
-            estrelaCheia.classList.remove('esconder')
-        }
-    })
+                if (favoritos.some(fav => fav.receitaId === receitaId)) {
+                    estrelaVazia.classList.add('esconder')
+                    estrelaCheia.classList.remove('esconder')
+                } else {
+                    estrelaVazia.classList.remove('esconder')
+                    estrelaCheia.classList.add('esconder')
+                }
+            })
+        })
+        .catch(() => {})
 }
 
 function configurarEstrelas() {
-    document.querySelectorAll('p').forEach(function (paragrafo) {
-        var estrelaVazia = paragrafo.querySelector('.estrela_vazia')
-        var estrelaCheia = paragrafo.querySelector('.estrela_cheia')
-        var receitaId = paragrafo.getAttribute('data-id')
+    document.querySelectorAll('p[data-id]').forEach(paragrafo => {
+        let estrelaVazia = paragrafo.querySelector('.estrela_vazia')
+        let estrelaCheia = paragrafo.querySelector('.estrela_cheia')
+        let receitaId = parseInt(paragrafo.getAttribute('data-id'))
 
         if (estrelaVazia && estrelaCheia && receitaId) {
             estrelaVazia.addEventListener('click', function () {
@@ -276,18 +282,28 @@ function configurarEstrelas() {
 }
 
 function salvarFavorito(id) {
-    let favoritos = JSON.parse(localStorage.getItem("receitas_favoritas")) || []
-
-    if (!favoritos.some(fav => fav.id === id)) {
-        favoritos.push({ id: id, teste: "teste" })
-        localStorage.setItem("receitas_favoritas", JSON.stringify(favoritos))
-    }
+    fetch('http://localhost:3000/receitas_favoritas', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ receitaId: id })
+    })
+        .then(response => response.json())
+        .then(() => {})
+        .catch(() => {})
 }
 
-function removerFavorito(id) {
-    let favoritos = JSON.parse(localStorage.getItem("receitas_favoritas")) || []
-    favoritos = favoritos.filter(fav => fav.id !== id)
-    localStorage.setItem("receitas_favoritas", JSON.stringify(favoritos))
+function removerFavorito(receitaId) {
+    fetch('http://localhost:3000/receitas_favoritas')
+        .then(response => response.json())
+        .then(favoritos => {
+            const favorito = favoritos.find(fav => fav.receitaId === receitaId)
+            if (favorito) {
+                fetch(`http://localhost:3000/receitas_favoritas/${favorito.id}`, {
+                    method: 'DELETE'
+                }).then(() => {}).catch(() => {})
+            }
+        })
+        .catch(() => {})
 }
 
 // --- DADOS DA CONTA ---
